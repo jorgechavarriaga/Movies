@@ -234,6 +234,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activestorage (~> 7.0, >= 7.0.4.2)
   bootsnap
   bootstrap-sass (~> 3.4, >= 3.4.1)
   capybara

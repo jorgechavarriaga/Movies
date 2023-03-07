@@ -16,7 +16,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'simple_form', '~> 5.2'
 gem 'jquery-rails'
 gem 'devise', '~> 4.9'
-
+gem 'activestorage', '~> 7.0', '>= 7.0.4.2'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
