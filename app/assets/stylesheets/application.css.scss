@@ -17,3 +17,16 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.sign-out-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    padding-top: 1.5rem;
+  }
+  
+.current_user {
+  padding-top:1.5rem;
+  padding-right: 5rem;
+}
