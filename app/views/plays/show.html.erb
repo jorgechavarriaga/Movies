@@ -2,6 +2,12 @@
 <p><%= @play.director %></p>
 <h3><%= @play.description %></h3>
 
-<%= link_to 'Back', root_path%>
-<%= link_to 'Edit', edit_play_path(@play)%>
-<%= button_to 'Delete', play_path(@play),  form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
+
+<div class="links btn-group">
+    <% if user_signed_in? %>
+        <% if @play.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_play_path(@play)%>
+            <%= button_to 'Delete', play_path(@play),  form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "sign-out-link" %>
+        <% end %>
+    <% end %>
+</div>
