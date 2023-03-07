@@ -1,13 +1,26 @@
-<h2><%= @play.title %></h2>
-<h3><%= @play.director %></h3>
-<h4><%= @play.category.name %></h4>
-<p><%= @play.description %></p>
+<div class="row">
+    <div class="col-md-4">
+    <% if @play.play_img.attached? %>
+        <%= image_tag @play.play_img, class: "play" %>
+    <% else %>
+        <p>NO IMAGE!!!</p>
+    <% end %>
+    </div>
+    <div class="col-md-8">
+        <div class="play-info">
+            <h2 class="play-title"><%= @play.title %></h2>
+            <h3 class="play-director"><span>From </span><%= @play.director %></h3>
+            <h4 class="play-director"><%= @play.category.name %></h4>
+            <p class="play-desc"><%= @play.description %></p>
+        </div>
+    </div>
+</div>
 
 <div class="links btn-group">
     <% if user_signed_in? %>
         <% if @play.user_id == current_user.id %>
-            <%= link_to 'Edit', edit_play_path(@play)%>
-            <%= button_to 'Delete', play_path(@play),  form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "sign-out-link" %>
+            <%= link_to 'Edit', edit_play_path(@play), class: "btn btn-custom" %>
+            <%= button_to 'Delete', play_path(@play),  form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete, class: "btn btn-custom" %>
         <% end %>
     <% end %>
 </div>
