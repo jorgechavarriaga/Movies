@@ -1,8 +1,20 @@
 <h1 class="current-category"><%= params[:category] %></h1>
-    <% if @plays.count == 0  %>
-        <h3>There are no plays in this category</h3>
-    <% else %>
+
+<% if @plays.count == 0  %>
+    <h3>There are no plays in this category</h3>
+<% else %>
+    <div class="row">
         <% @plays.each do |play| %>
-        <h2><%= link_to play.title, play_path(play) %></h2>
-    <% end %>
+            <div class="col-md-3">
+                <h2><%= link_to play.title, play_path(play) %></h2>
+                <a href="<%= play_path(play) %>">
+                    <% if play.play_img.attached? %>
+                        <%= image_tag url_for(play.play_img), class: "play" %>
+                    <% else %>
+                        <p>NO IMAGE!!!</p>
+                    <% end %>
+                </a>
+            </div>
+        <% end %>
+    </div>
 <% end %>
