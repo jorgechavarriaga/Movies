@@ -1,7 +1,6 @@
 class PlaysController < ApplicationController
     before_action :find_play, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :edit]
-    
 
     def index
         if params[:category].blank?
@@ -14,6 +13,11 @@ class PlaysController < ApplicationController
 
 
     def show
+        if @play.reviews.blank?
+            @average_review = 0
+        else
+            @average_review = @play.reviews.average(:rating).round(2)
+        end
     end
 
     def new
