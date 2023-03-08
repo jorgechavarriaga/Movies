@@ -14,33 +14,7 @@
  *= require_self
  */
 
- 
+@import url(https://fonts.googleapis.com/css?family=Lato); 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-.sign-out-link {
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    padding-top: 1.5rem;
-  }
-  
-.current_user {
-  padding-top:1.5rem;
-  padding-right: 5rem;
-}
-
-.play {
-  width: 250px;
-  height: 350px;
-}
-
-.play_show {
-  width: 325px;
-  height: 475px;
-}
-
-.test {
-  display: flex;
-}
+@import "plays.css.scss";

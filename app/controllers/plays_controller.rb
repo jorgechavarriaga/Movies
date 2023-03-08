@@ -9,6 +9,16 @@ class PlaysController < ApplicationController
             @category_id = Category.find_by(name: params[:category]).id
             @plays = Play.where(:category_id => @category_id).order('created_at DESC')
         end
+
+        @average_reviews = {}
+  
+        @plays.each do |play|
+            if play.reviews.blank?
+                @average_reviews[play.id] = 0
+            else
+                @average_reviews[play.id] = play.reviews.average(:rating).round(2)
+            end
+        end
     end
 
 

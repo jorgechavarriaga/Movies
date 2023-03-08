@@ -6,10 +6,10 @@
     <div class="row">
         <% @plays.each do |play| %>
             <div class="col-md-3">
-                <h2><%= link_to play.title, play_path(play) %></h2>
                 <a href="<%= play_path(play) %>">
                     <% if play.play_img.attached? %>
                         <%= image_tag url_for(play.play_img), class: "play" %>
+                        <div class="average-review-rating" data-score=<%= @average_reviews[play.id] %>></div>
                     <% else %>
                         <p>NO IMAGE!!!</p>
                     <% end %>
@@ -18,3 +18,14 @@
         <% end %>
     </div>
 <% end %>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+        step: 0.5, 
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>
