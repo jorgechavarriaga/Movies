@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BroadwayMovies</title>
+    <title>My Movies</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "https://code.jquery.com/jquery-3.6.0.min.js" %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/jquery.raty.js", integrity: "sha512-wODMIkJVALeKc1vOZOZpqG8GOvzt4lGky9hvvEkba9jQHfRT3npya52cEjMPWZv8PyPsoPuWfgEGTrLdwCtahg==", crossorigin: "anonymous", referrerpolicy: "no-referrer" %>
+    <%= stylesheet_link_tag    'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%= javascript_importmap_tags %>
   </head>
   <body>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <%= link_to "Broadway", root_path, class: "navbar-brand" %>
+          <%= link_to "My Movies", root_path, class: "navbar-brand" %>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li class="current_user">Welcome <%= current_user.email %></li>
-            <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "sign-out-link" %></li>
-          <% else %>
+            <% if user_signed_in? %>
+              <ul class="nav navbar-nav"> 
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Welcome <%= current_user.email %> <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "sign-out-link" %></li>
+                    <% if @is_admin %>
+                      <li><%= link_to "Admin Genres", categories_path, class: "admin-genres" %></li>
+                    <% end %>
+                  </ul>
+                </li>
+              </ul>
+            <% else %>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
             <li><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
@@ -42,10 +56,26 @@
         </ul>
       </div>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="flash-messages">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
     <div class="container">
       <%= yield %>
     </div>
+    
   </body>
 </html>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+      var flashMessages = document.querySelector(".flash-messages");
+      if (flashMessages) {
+        flashMessages.remove();
+      }
+    }, 5000); 
+  });
+
+</script>

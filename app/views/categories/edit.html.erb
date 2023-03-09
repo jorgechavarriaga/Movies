@@ -1,0 +1,10 @@
+<div class="col-md-10 col-md-offset-1">
+	<div class="new-play-form">
+		<h1>Edit Category</h1>
+        <%= simple_form_for @category do |f| %>
+		  <%= f.input :name %>
+          <br>
+		  <%= f.button :submit %>
+		<% end %>
+	</div>
+</div>

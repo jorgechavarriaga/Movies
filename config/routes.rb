@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :plays do
   	resources :reviews
   end
+  resources :categories
   root 'plays#index'
 
 end

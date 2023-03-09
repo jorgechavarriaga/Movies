@@ -4,16 +4,51 @@
     cursor: pointer;
     text-decoration: none;
     padding-top: 1.5rem;
-  }
-  
+	padding-left: 2rem;
+}
+
+.admin-genres {
+	padding-top: 1.5rem;
+	text-transform: none!important;
+
+}
+
 .current_user {
   padding-top:1.5rem;
   padding-right: 5rem;
 }
 
 .test {
-  display: flex;
+	display: flex !important;
+	margin: 1rem;
+	text-align: center;
 }
+
+.mytable{
+	background-color: white;
+	color: #271919;
+	border-radius: 20px;
+}
+
+.mytable-title {
+	color: white;
+	text-align: center;
+}
+
+
+.average-review-rating {
+	margin-bottom: 1rem;
+}
+
+.play-carousel .slick-slide {
+	max-height: 400;
+  }
+  
+  .play-carousel .slick-slide .average-review-rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
 
 /* Variables, mixins, etc.. */
 
@@ -29,11 +64,11 @@
 /* General styles */
 
 body {
-	background: -webkit-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
-  background:    -moz-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
-  background:     -ms-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
-  background:      -o-linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
-  background:         linear-gradient(40deg, #d1edf0 10%, #ecc8c6 100%);
+	background: -webkit-linear-gradient(40deg, #7d504d 10%, #412b2a 100%);
+  background:    -moz-linear-gradient(40deg, #7d504d 10%, #412b2a 100%);
+  background:     -ms-linear-gradient(40deg, #7d504d 10%, #412b2a 100%);
+  background:      -o-linear-gradient(40deg, #7d504d 10%, #412b2a 100%);
+  background:         linear-gradient(40deg, #7d504d 10%, #412b2a 100%);
 	font-family: 'Lato', sans-serif;
 }
 
@@ -44,7 +79,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p.alert, p.notice {
-	margin: 0;
+	font-size: 24px;
+	color:white;
+	margin: 0px 0px 0px 10px;
+	padding: 0;
 }
 
 
@@ -55,22 +93,23 @@ p.alert, p.notice {
 	text-transform: uppercase;
 }
 .navbar-default {
-	background-color: #fff;
-	padding-bottom: 5px;
-	padding-top: 5px;
+	background-image: linear-gradient(40deg, #513735 10%, #271919 100%)!important;
+	padding-bottom: 0px;
+	padding-top: 2px;
 
 	.navbar-nav > li > a {
-		color: #222;
+		color: white!important;
 		&:hover {
-			color: darken(#bdbdbd, 5%);
+			color: darken(black, 5%)!important;
 			transition: 0.5s;
+			background-color: white!important;
 		}
 	}
 
 	.navbar-header {
 
 		.navbar-brand {
-			color: #A77DC2;
+			color: white;
 			letter-spacing: 1.4px;
 			text-transform: uppercase;
 			font-size: 2.3em;
@@ -80,7 +119,7 @@ p.alert, p.notice {
 	}
 
 	.dropdown-menu > li > a:hover {
-		background-color: darken(#bdbdbd, 5%);
+		background-color: darken(#734e4e, 5%);
 		color: #fff;
 	}
 
@@ -101,15 +140,17 @@ p.alert, p.notice {
 
 .btn-custom {
 	color: darken(#bdbdbd, 5%);
+	width: max-content;
 	background-color: #fff;
-	border: 1px solid darken(#bdbdbd, 5%);
+	border: 1px solid darken(#bdbdbd, 5%) !important;
 	padding: 8px 20px;
-	border-radius: 0px;
+	border-radius: 18px !important;
+	margin-right: 2.5rem !important;
 	font-family: 'Lato', sans-serif;
 	&:hover {
 		text-decoration: none;
-		background-color: darken(#bdbdbd, 5%);
-		color: #fff;
+		background-color: black;
+		color: #fff !important;
 		transition: 0.5s;
 	}
 }
@@ -117,14 +158,15 @@ p.alert, p.notice {
 .btn-custom2 {
 	color: #333;
 	background-color: #fff;
-	border: 1px solid #222;
+	border: 1px solid darken(#bdbdbd, 5%) !important;
 	padding: 8px 20px;
-	border-radius: 0px;
+	border-radius: 18px !important;
 	font-family: 'Lato', sans-serif;
+	margin-right: 2.5rem !important;
 	&:hover {
 		text-decoration: none;
 		background-color: #333;
-		color: #fff;
+		color: #fff !important;
 		transition: 0.5s;
 	}	
 }

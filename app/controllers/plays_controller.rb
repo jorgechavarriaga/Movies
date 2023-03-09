@@ -1,14 +1,15 @@
 class PlaysController < ApplicationController
     before_action :find_play, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :edit]
+    before_action :is_admin
 
     def index
         if params[:category].blank?
-            @plays = Play.all.order('created_at DESC')
-        else
-            @category_id = Category.find_by(name: params[:category]).id
-            @plays = Play.where(:category_id => @category_id).order('created_at DESC')
-        end
+			@plays = Play.all.order("created_at DESC")
+		else
+			@category_id = Category.find_by(name: params[:category]).id
+			@plays = Play.where(:category_id => @category_id).order("created_at DESC")
+		end
 
         @average_reviews = {}
   
@@ -72,6 +73,10 @@ class PlaysController < ApplicationController
 
     def find_play
         @play = Play.find(params[:id])
+    end
+
+    def is_admin
+        @is_admin = current_user && current_user.email == "jorge.chavarriaga@gmail.com"
     end
 
 end

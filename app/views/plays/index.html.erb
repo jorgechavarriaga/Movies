@@ -4,28 +4,134 @@
     <h3>There are no plays in this category</h3>
 <% else %>
     <div class="row">
-        <% @plays.each do |play| %>
-            <div class="col-md-3">
-                <a href="<%= play_path(play) %>">
-                    <% if play.play_img.attached? %>
-                        <%= image_tag url_for(play.play_img), class: "play" %>
-                        <div class="average-review-rating" data-score=<%= @average_reviews[play.id] %>></div>
-                    <% else %>
-                        <p>NO IMAGE!!!</p>
-                    <% end %>
-                </a>
-            </div>
-        <% end %>
+        <div class="play-carousel">
+            <% @plays.each do |play| %>
+                <div class="col-md-3">
+                    <a href="<%= play_path(play) %>">
+                        <% if play.play_img.attached? %>
+                            <%= image_tag url_for(play.play_img), class: "play" %>
+                            <h4  style="color: white; text-align: center">Average Rating</h2>
+                            <div class="average-review-rating" data-score=<%= @average_reviews[play.id] %>></div>
+                        <% else %>
+                            <p>NO IMAGE!!!</p>
+                        <% end %>
+                    </a>
+                </div>
+            <% end %>
+        </div>
     </div>
 <% end %>
+
+
+<style>
+  .play-carousel .slick-arrow {
+    color: white;
+    background-color: transparent;
+    border: none;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 7.5rem;
+    opacity: .25;
+
+    z-index: 1;
+  }
+
+  .play-carousel .slick-prev {
+    left: -9.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .play-carousel .slick-next {
+    right: -4.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .slick-dots {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .slick-dots li button:before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  background-color: black;
+}
+.slick-dots li {
+    list-style-type: none;
+}
+
+
+.slick-dots li button {
+  font-size: 0;
+  background-color: transparent;
+  border: none;
+}
+
+
+
+
+</style>
 
 <script>
 	$('.average-review-rating').raty({
 		readOnly: true,
 		path: '/assets/',
-        step: 0.5, 
 		score: function() {
 			return $(this).attr('data-score')
 		}
 	});
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('.play-carousel').slick({
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      dots: true,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev glyphicon glyphicon-chevron-left"></button>',
+      nextArrow: '<button type="button" class="slick-next glyphicon glyphicon-chevron-right"></button>',
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+          }
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          }
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        }
+      ]
+    });
+  });
 </script>
