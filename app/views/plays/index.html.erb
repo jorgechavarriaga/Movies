@@ -1,8 +1,12 @@
-<h1 class="current-category"><%= params[:category] %></h1>
-
+<% if params[:category] %>
+  <h2 class="rec_1">Movies - <%= params[:category] %></h2>
+<% else %>
+  <h2 class="rec_1">Movies </h2>
+<% end %>
 <% if @plays.count == 0  %>
     <h3>There are no plays in this category</h3>
 <% else %>
+
     <div class="row">
         <div class="play-carousel">
             <% @plays.each do |play| %>
@@ -102,8 +106,8 @@
 <script>
   $(document).ready(function(){
     $('.play-carousel').slick({
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: 6,
+      slidesToScroll: 6,
       dots: true,
       arrows: true,
       prevArrow: '<button type="button" class="slick-prev glyphicon glyphicon-chevron-left"></button>',
