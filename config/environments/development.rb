@@ -38,6 +38,6 @@ Rails.application.configure do
     password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
-  config.action_mailer.default_url_options = { host: '4c20-142-118-5-74.ngrok.io' }
-  config.hosts << "4c20-142-118-5-74.ngrok.io"
+  config.action_mailer.default_url_options = { host: '7283-142-118-5-74.ngrok.io' }
+  config.hosts << "7283-142-118-5-74.ngrok.io"
 end

@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.9'
 gem 'activestorage', '~> 7.0', '>= 7.0.4.2'
 gem 'figaro'
+gem 'mysql2', '~> 0.5.5'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

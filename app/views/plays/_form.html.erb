@@ -1,9 +1,10 @@
-<%= simple_form_for @play do |f| %>
-  <%= f.file_field :play_img %>
-	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category") %>
-  <%= f.input :title, label: 'Play Title' %>
-  <%= f.input :description %>
-  <%= f.input :director %>
+<%= simple_form_for @play, id: "play-form" do |f| %>
+  <%= f.file_field :play_img, required: true %>
+  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category", required: true) %>
+  <%= f.input :title, label: 'Play Title', required: true %>
+  <%= f.input :description, required: true %>
+  <%= f.input :director, required: true %>
   <br>
   <%= f.button :submit %>
 <% end %>
+
