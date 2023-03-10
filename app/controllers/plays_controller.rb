@@ -38,7 +38,9 @@ class PlaysController < ApplicationController
 
     def create
         @play = current_user.plays.build(play_params)
-        @play.category_id = params[:category_id]
+        @categories = Category.all.map{ |c| [c.name, c.id]}
+
+        @play.category_id = params[:category_id] 
         if @play.save
             redirect_to root_path
         else

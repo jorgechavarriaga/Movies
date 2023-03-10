@@ -1,10 +1,22 @@
 <%= simple_form_for @play, id: "play-form" do |f| %>
-  <%= f.file_field :play_img, required: true %>
-  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category", required: true) %>
-  <%= f.input :title, label: 'Play Title', required: true %>
-  <%= f.input :description, required: true %>
-  <%= f.input :director, required: true %>
+  
+  <a  class="btn-custom2" onclick="document.getElementById('play_img').click(); return false;">Select File</a>
+  <%= f.file_field :play_img, accept: 'image/*', required: true, style: 'display:none;', id: 'play_img', onchange: "document.getElementById('filename').innerHTML = (this.files.length === 0) ? '' : this.files[0].name" %>
+  <span id="filename" style="font-weight: bold;"></span>
   <br>
-  <%= f.button :submit %>
+  <br>
+  <%= f.error :play_img, class: "alert1" %>
+  <br>
+  <%= f.label :category_id %>
+  <%= select_tag(:category_id, options_for_select(@categories), prompt: "Select a Category", required: true) %>
+  <%= f.error :category_id, class: "alert1" %>
+  <%= f.input :title, label: 'Movie' %>
+  <%= f.error :title, class: "alert1" %>
+  <%= f.input :description %>
+  <%= f.error :description, class: "alert1" %>
+  <%= f.input :director %>
+  <%= f.error :director, class: "alert1" %>
+  <br>
+  <%= f.button :submit, class: "btn-custom2" %>
 <% end %>
 
